@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model transactions {
+  account_identification       String   @db.VarChar(50)
+  bank_code                    String   @db.VarChar(20)
+  closing_available_balance    String?  @db.VarChar(255)
+  closing_balance              Decimal  @db.Decimal(15, 2)
+  forward_available_balance    String?  @db.VarChar(255)
+  opening_balance              Decimal  @db.Decimal(15, 2)
+  statement_number             String   @db.VarChar(10)
+  transaction_amount           Decimal  @db.Decimal(15, 2)
+  transaction_date             DateTime @db.Date
+  transaction_details          String?  @db.VarChar(255)
+  transaction_reference_number String?  @db.VarChar(255)
+  transaction_type             String   @db.Char(1)
+  id                           Int      @id @default(autoincrement())
+  sender                       String   @db.VarChar(50)
+  batch_id                     String   @db.VarChar(50)
+}
