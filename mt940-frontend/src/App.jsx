@@ -1,11 +1,11 @@
-import "./App.css";
 import React from "react";
-import ListOfComponent from "./components/ListOfComponent";
+import ListOfComponent from "./components/ListOfComponent.jsx";
+
 
 function App() {
   return (
-    <div>
-      <ListOfComponent />
+    <div className="App">
+      <ListOfComponent/>
     </div>
   );
 }

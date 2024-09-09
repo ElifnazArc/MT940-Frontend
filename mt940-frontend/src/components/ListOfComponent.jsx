@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { listTransactions } from "../services/TransactionService";
 
 const ListOfComponent = () => {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:4000/transactions"); // API'den verileri çek
-        setTransactions(response.data); // Çekilen verileri state'e kaydet
-      } catch (error) {
-        console.error("Error fetching transactions:", error);
-      }
-    };
-
-    fetchData(); // Verileri çek
-  }, []); // Boş bağımlılık dizisi, yalnızca bileşen ilk yüklendiğinde çalışır
+    listTransactions()
+      .then((response) => {
+        console.log("EFFECT İÇİNE GİRDİ");
+        console.log(response.data);
+        setTransactions(response.data);
+        console.log("İÇERDEN ÇIKTI");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <div>
-      <h2>List Of Transactions</h2>
-      <table>
+      <h2 className="text-center">List Of Transactions</h2>
+      <table className="table table-striped table-bordered">
         <thead>
           <tr>
             <th>Bank Code</th>
