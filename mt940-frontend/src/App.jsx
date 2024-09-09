@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <ListOfComponent/>
     </div>
-  );
+  ); 
 }
 
 export default App;

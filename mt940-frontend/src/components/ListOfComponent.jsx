@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { listTransactions } from "../services/TransactionService";
 
 const ListOfComponent = () => {
@@ -8,21 +7,19 @@ const ListOfComponent = () => {
   useEffect(() => {
     listTransactions()
       .then((response) => {
-        console.log("EFFECT İÇİNE GİRDİ");
-        console.log(response.data);
+        console.log(response.data); // API'den gelen verileri konsolda göster
         setTransactions(response.data);
-        console.log("İÇERDEN ÇIKTI");
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Error fetching transactions:", error);
       });
   }, []);
 
   return (
-    <div>
-      <h2 className="text-center">List Of Transactions</h2>
-      <table className="table table-striped table-bordered">
-        <thead>
+    <div className="container">
+      <h2 className="text-center my-4">List Of Transactions</h2>
+      <table className="table table-bordered table-striped">
+        <thead className="thead-dark">
           <tr>
             <th>Bank Code</th>
             <th>Batch Id</th>
@@ -41,28 +38,52 @@ const ListOfComponent = () => {
           </tr>
         </thead>
         <tbody>
-          {transactions.map((transaction) => (
-            <tr key={transaction.id}>
-              <td>{transaction.bank_code}</td>
-              <td>{transaction.batch_id}</td>
-              <td>{transaction.account_identification}</td>
-              <td>{transaction.transaction_amount.toFixed(2)}</td>
-              <td>{transaction.transaction_details}</td>
-              <td>{transaction.closing_available_balance}</td>
-              <td>{transaction.closing_balance.toFixed(2)}</td>
-              <td>{transaction.forward_available_balance}</td>
-              <td>{transaction.opening_balance.toFixed(2)}</td>
-              <td>{transaction.statement_number}</td>
-              <td>
-                {transaction.transaction_date
-                  ? new Date(transaction.transaction_date).toLocaleDateString()
-                  : "N/A"}
+          {transactions.length > 0 ? (
+            transactions.map((transaction, index) => (
+              <tr key={index}>
+                <td>{transaction.bankCode || "N/A"}</td>
+                <td>{transaction.batchId || "N/A"}</td>
+                <td>{transaction.accountIdentification || "N/A"}</td>
+                <td>
+                  {transaction.transactionAmount
+                    ? transaction.transactionAmount.toFixed(2)
+                    : "N/A"}
+                </td>
+                <td>{transaction.transactionDetails || "N/A"}</td>
+                <td>
+                  {transaction.closingAvailableBalance
+                    ? transaction.closingAvailableBalance
+                    : "N/A"}
+                </td>
+                <td>
+                  {transaction.closingBalance
+                    ? transaction.closingBalance.toFixed(2)
+                    : "N/A"}
+                </td>
+                <td>{transaction.forwardAvailableBalance || "N/A"}</td>
+                <td>
+                  {transaction.openingBalance
+                    ? transaction.openingBalance.toFixed(2)
+                    : "N/A"}
+                </td>
+                <td>{transaction.statementNumber || "N/A"}</td>
+                <td>
+                  {transaction.transactionDate
+                    ? new Date(transaction.transactionDate).toLocaleDateString()
+                    : "N/A"}
+                </td>
+                <td>{transaction.transactionReferenceNumber || "N/A"}</td>
+                <td>{transaction.transactionType || "N/A"}</td>
+                <td>{transaction.sender || "N/A"}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="14" className="text-center">
+                No transactions available.
               </td>
-              <td>{transaction.transaction_reference_number}</td>
-              <td>{transaction.transaction_type}</td>
-              <td>{transaction.sender}</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>
