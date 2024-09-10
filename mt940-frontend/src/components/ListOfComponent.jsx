@@ -17,8 +17,8 @@ const ListOfComponent = () => {
 
   return (
     <div className="container">
-      <h2 className="text-center my-4">List Of Transactions</h2>
-      <table className="table table-bordered table-striped">
+      {/* <h2 className="text-center">List Of Transactions</h2> */}
+      <table className="table" border = "1">
         <thead className="thead-dark">
           <tr>
             <th>Bank Code</th>

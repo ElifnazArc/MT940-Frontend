@@ -1,7 +1,64 @@
 /* index.css */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
-  
+
+.App header {
+  padding-top: 50px; /* Üst kısımdan daha fazla boşluk eklenir */
+  text-align: center;
+}
+
+.App {
+  padding: 20px;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: white;
+}
+
+.light-mode {
+  background-color: white;
+  color: black;
+}
+
+
+/* Sağ üst köşeye yerleştirmek için düğme stili */
+#modeToggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+.table-striped {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-striped th, .table-striped td {
+  padding: 8px;
+  text-align: left;
+}
+
+.table-striped tr:nth-child(even) {
+  background-color: #f2f2f2; /* Aydınlık modda çizgili arka plan */
+}
+
+.table-striped.light th, .table-striped.light td {
+  background-color: white;
+  color: black;
+}
+
+.table-striped.dark th, .table-striped.dark td {
+  background-color: #444; /* Karanlık mod arka plan rengi */
+  color: white;
+}
+
+img {
+  position: absolute; /* Sabit pozisyon için absolute kullanıyoruz */
+  top: 10px; /* Üstten 10px boşluk bırak */
+  right: 10px; /* Sağdan 10px boşluk bırak */
+  cursor: pointer; /* Üzerine gelindiğinde pointer imleci göster */
+  z-index: 1000; /* Diğer içeriklerin üzerinde görünmesi için */
+}
+
