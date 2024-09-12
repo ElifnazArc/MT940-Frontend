@@ -1,18 +1,20 @@
-/*Tablo için yatay kaydırma çubuğu */
+/* Tablo için yatay kaydırma çubuğu */
 .table-wrapper {
-    max-width: 100%;
-    overflow-x: auto; 
-  }
+  max-width: 100%; 
+  overflow-x: auto; /* Sadece tabloya yatay kaydırma uygular */
+  margin: 0 auto; /* Merkezi yerleşim için */
+}
 
 /* Dark ve Light Mode Gövdeye Uygun Arka Plan */
 .styled-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: "Arial", sans-serif;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  }
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: "Arial", sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
   
   .styled-table thead tr {
     background-color: #17872b; /*tablodaki başlıkların yazdığı yerin arka planı*/

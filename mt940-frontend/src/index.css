@@ -1,63 +1,41 @@
-.App header {
-  padding-top: 50px; /* Üst kısımdan daha fazla boşluk eklenir */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
 }
 
-.App {
-  padding: 20px;
+.App header {
+  padding-top: 50px;
+  text-align: center;
 }
 
-.dark-mode {
-  background-color: #333;
-  color: white;
+/* Bağlantıları saran konteyneri tanımlıyoruz */
+.navbar {
+  position: fixed; /* Sayfanın üstünde sabit kalmasını sağlar */
+  top: 0; /* Üstten mesafeyi ayarlar */
+  left: 0; /* Soldan mesafeyi ayarlar */
+  padding: 10px; /* İç boşluk */
+  background-color: #f0f0f0; /* Arka plan rengi (isteğe bağlı) */
+  z-index: 1000; /* Diğer öğelerin üzerinde görünmesini sağlar */
+  display: flex; /* Yatay hizalama için flex kullanıyoruz */
+  gap: 20px; /* Bağlantılar arasındaki boşluk */
 }
 
-.light-mode {
-  background-color: white;
-  color: black;
+/* Bağlantıların stilini ayarlıyoruz */
+.navbar a {
+  font-size: 18px; /* Font boyutunu büyütür */
+  color: #333; /* Yazı rengi */
+  text-decoration: none; /* Alt çizgi kaldırır */
 }
 
-
-/* Sağ üst köşeye yerleştirmek için düğme stili */
-#modeToggle {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  padding: 10px;
-  cursor: pointer;
+/* Bağlantıya hover efekti */
+.navbar a:hover {
+  color: #007bff; /* Hover rengi */
 }
-
-
-.table-striped {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.table-striped th, .table-striped td {
-  padding: 8px;
-  text-align: left;
-}
-
-.table-striped tr:nth-child(even) {
-  background-color: #f2f2f2; /* Aydınlık modda çizgili arka plan */
-}
-
-.table-striped.light th, .table-striped.light td {
-  background-color: white;
-  color: black;
-}
-
-.table-striped.dark th, .table-striped.dark td {
-  background-color: #444; /* Karanlık mod arka plan rengi */
-  color: white;
-}
-
-img {
-  position: absolute; /* Sabit pozisyon için */
-  top: 10px; 
-  right: 10px; 
-  cursor: pointer; 
-  z-index: 1000; 
-}
-
-

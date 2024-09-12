@@ -1,42 +1,31 @@
-import React, { useState, useEffect } from "react";
-import ListOfComponent from "./components/ListOfComponent.jsx";
-import ThemeToggle from "./components/ThemeToggle.jsx";
-import OptionsMenu from "./components/OptionsMenu.jsx";
-import './index.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Home from "./paths/Home";
+import Page1 from "./paths/Page1";
+import Page2 from "./paths/Page2";
+import "./index.css";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [showOptions, setShowOptions] = useState(false);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('dark-mode');
-      document.body.classList.remove('light-mode');
-    } else {
-      document.body.classList.add('light-mode');
-      document.body.classList.remove('dark-mode');
-    }
-  }, [darkMode]);
-
-  const toggleMode = () => {
-    setDarkMode(prevMode => !prevMode);
-  };
-
-  const toggleOptions = () => {
-    setShowOptions(prevShow => !prevShow);
-  };
-
   return (
-    <div className="App">
-      <header>
-        <h1>MT940 SHOWCASE</h1>
-        <ThemeToggle darkMode={darkMode} toggleMode={toggleMode} />
-        <OptionsMenu showOptions={showOptions} toggleOptions={toggleOptions} />
-      </header>
-      <main>
-        <ListOfComponent darkMode={darkMode} />
-      </main>
-    </div>
+    <Router>
+      <div className="App">
+        <header>
+          <nav className="navbar">
+            <Link to="/all-records">Home Page</Link>
+            <Link to="/update">Update Page</Link>
+            <Link to="/filter">Filter Page</Link>
+          </nav>
+        </header>
+
+        <main>
+          <Routes>
+            <Route path="/all-records" element={<Home />} />
+            <Route path="/update" element={<Page1 />} />
+            <Route path="/filter" element={<Page2 />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
