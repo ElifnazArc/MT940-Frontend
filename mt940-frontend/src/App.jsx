@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./paths/Home";
-import Page1 from "./paths/Page1";
-import Page2 from "./paths/Page2";
+import Update from "./paths/Update";
 import "./index.css";
 
 function App() {
@@ -13,15 +12,13 @@ function App() {
           <nav className="navbar">
             <Link to="/all-records">Home Page</Link>
             <Link to="/update">Update Page</Link>
-            <Link to="/filter">Filter Page</Link>
           </nav>
         </header>
 
         <main>
           <Routes>
             <Route path="/all-records" element={<Home />} />
-            <Route path="/update" element={<Page1 />} />
-            <Route path="/filter" element={<Page2 />} />
+            <Route path="/update" element={<Update />} />
           </Routes>
         </main>
       </div>
