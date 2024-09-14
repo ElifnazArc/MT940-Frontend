@@ -1,8 +1,8 @@
+import axios from "axios";
 import React, { useState } from "react";
-import axios from "axios"; // You can use axios for API calls, or fetch if you prefer
 
 const Update = () => {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(null); 
   const [uploadSuccess, setUploadSuccess] = useState(false);
 
   const handleFileChange = (event) => {
@@ -15,12 +15,11 @@ const Update = () => {
       alert("Lütfen bir dosya seçin.");
       return;
     }
-
+  
     const formData = new FormData();
     formData.append("file", file);
-
+  
     try {
-      // Replace with your actual backend API URL
       const response = await axios.post(
         "http://localhost:8080/api/upload",
         formData,
@@ -30,8 +29,9 @@ const Update = () => {
           },
         }
       );
+  
       console.log("File upload success:", response.data);
-      setUploadSuccess(true); // Set upload success if needed
+      setUploadSuccess(true);
     } catch (error) {
       console.error("File upload failed:", error);
       setUploadSuccess(false);
@@ -42,7 +42,6 @@ const Update = () => {
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h2>Dosya Seçiniz</h2>
 
-      {/* File input */}
       <input
         type="file"
         accept=".txt"
@@ -51,7 +50,6 @@ const Update = () => {
         id="file-upload"
       />
 
-      {/* Label acts as a styled button */}
       <label
         htmlFor="file-upload"
         style={{
@@ -65,7 +63,6 @@ const Update = () => {
         Dosya Seç
       </label>
 
-      {/* Upload button */}
       <button
         onClick={handleUpload}
         style={{
@@ -76,14 +73,12 @@ const Update = () => {
           color: "white",
           borderRadius: "5px",
           cursor: "pointer",
-          marginLeft: "auto",
-          marginRight: "auto",
+          margin: "20px auto", // Centered button
         }}
       >
         Yükle
       </button>
 
-      {/* Show success message if file is uploaded */}
       {uploadSuccess && (
         <p style={{ color: "green" }}>Dosya başarıyla yüklendi!</p>
       )}
