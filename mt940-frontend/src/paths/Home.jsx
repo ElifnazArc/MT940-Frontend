@@ -1,4 +1,3 @@
-import React from "react";
 import ListOfComponent from "../components/ListOfComponent";
 import { listTransactions } from "../services/TransactionService";
 

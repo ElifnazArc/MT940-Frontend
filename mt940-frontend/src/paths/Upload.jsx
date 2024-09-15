@@ -1,13 +1,14 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
+import ListOfComponent from "../components/ListOfComponent";
 
-const Update = () => {
+const Upload = () => {
   const [file, setFile] = useState(null); 
   const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [uploadedTransactions, setUploadedTransactions] = useState([]);
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
-    console.log(event.target.files[0]); // Logs the selected file to the console
   };
 
   const handleUpload = async () => {
@@ -31,6 +32,7 @@ const Update = () => {
       );
   
       console.log("File upload success:", response.data);
+      setUploadedTransactions(response.data); // Dosyadan gelen işlemleri kaydet
       setUploadSuccess(true);
     } catch (error) {
       console.error("File upload failed:", error);
@@ -73,7 +75,7 @@ const Update = () => {
           color: "white",
           borderRadius: "5px",
           cursor: "pointer",
-          margin: "20px auto", // Centered button
+          margin: "20px auto",
         }}
       >
         Yükle
@@ -82,8 +84,13 @@ const Update = () => {
       {uploadSuccess && (
         <p style={{ color: "green" }}>Dosya başarıyla yüklendi!</p>
       )}
+
+      {/* Yüklenen dosyanın verilerini gösteren tablo */}
+      {uploadedTransactions.length > 0 && (
+        <ListOfComponent fetchTransactions={() => Promise.resolve({ data: uploadedTransactions })} />
+      )}
     </div>
   );
 };
 
-export default Update;
+export default Upload;

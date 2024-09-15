@@ -1,7 +1,6 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./paths/Home";
-import Update from "./paths/Update";
+import Update from "./paths/Upload";
 import "./index.css";
 
 function App() {
